@@ -3,6 +3,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     public string matchColor;
+    public CubeGlow targetLamp;
     
     private bool isPressed = false;
     private Animator animator;
@@ -16,6 +17,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other && other.CompareTag(matchColor) && !isPressed) { 
             animator.SetBool("isPressed", true);
+            targetLamp.LightUp();
             isPressed = true;
         }
     }
@@ -25,6 +27,7 @@ public class PressurePlate : MonoBehaviour
         if (other && other.CompareTag(matchColor) && isPressed)
         {
             animator.SetBool("isPressed", false);
+            targetLamp.LightDown();
             isPressed = false;
         }
     }
