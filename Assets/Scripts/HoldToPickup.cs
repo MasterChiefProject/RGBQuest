@@ -31,7 +31,7 @@ public class HoldToPickup : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject playerRoot;   // object with the player collider
     [SerializeField] private Transform holdPoint;     // HoldPoint now lives on the PLAYER
-    [SerializeField] private string grabTag;          // tag used on pick‑up objects
+    [SerializeField] private string[] grabTags;       // objects with ANY of these tags can be picked up
 
     /*────────────────────── Inspector ▸ Tuning ───────────────────────*/
     [Header("Tuning")]
@@ -133,9 +133,17 @@ public class HoldToPickup : MonoBehaviour
         if (Vector3.Distance(playerRoot.transform.position, hit.point) > maxGrabDistance)
             return;
 
+        bool MatchesGrabTag(Transform t)
+        {
+            foreach (string tag in grabTags)
+                if (t.CompareTag(tag))
+                    return true;
+            return false;
+        }
+
+        if (!MatchesGrabTag(hit.transform)) return;
 
 
-        if (!hit.transform.CompareTag(grabTag)) return;
         if (!hit.rigidbody)
         {
             Debug.LogWarning($"[HoldToPickup] Grabbable object '{hit.transform.name}' lacks Rigidbody.");
