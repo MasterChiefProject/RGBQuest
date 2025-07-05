@@ -581,7 +581,7 @@ Transform:
   m_GameObject: {fileID: 1700931947952807580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 112.2, y: 0.58, z: 53.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1536,7 +1536,7 @@ Transform:
   m_GameObject: {fileID: 4320814645352794877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20000005, y: 1.7, z: -4}
+  m_LocalPosition: {x: 0.19999695, y: 1.7, z: -2.0161705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1785,7 +1785,7 @@ Transform:
   m_GameObject: {fileID: 4602052765462473544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6505339, y: 1.0959456, z: -6.956606}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1940,13 +1940,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRoot: {fileID: 6942204240009689372}
   holdPoint: {fileID: 4667894128223226033}
-  grabTag: Box
+  grabTags:
+  - Yellow
+  - Purple
+  - Blue
+  - Red
   maxGrabDistance: 5
   throwForce: 500
   rotateSensitivity: 1
   grabbableMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   obstructionMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2462,8 +2466,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942204240009689372}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4505339, y: -0.60405445, z: -2.956606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3373,8 +3377,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8829298997535193770}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4505339, y: -0.60405445, z: -2.956606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
