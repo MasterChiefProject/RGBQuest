@@ -7,14 +7,15 @@ TagManager:
   - Yellow
   - CinemachineTarget
   - Ground
+  - Box
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Box
   - Water
   - UI
-  - 
+  - holdLayer
   - 
   - 
   - 
