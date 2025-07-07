@@ -18,6 +18,10 @@ public class CameraSwitcher : MonoBehaviour
     [Tooltip("Drag an InputActionReference that listens to 'SwitchView' (keyboard V).")]
     [SerializeField] private InputActionReference switchViewAction;
 
+    [Header("Guns")]
+    [SerializeField] private GameObject firstPersonGun;
+    [SerializeField] private GameObject thirdPersonGun;
+
     /* ----------------  Private state  ---------------- */
     private bool _isFirstPerson;
 
@@ -63,6 +67,9 @@ public class CameraSwitcher : MonoBehaviour
 
         firstPersonController.enabled = true;
         thirdPersonController.enabled = false;
+
+        firstPersonGun.SetActive(true);
+        thirdPersonGun.SetActive(false);
     }
 
     private void ActivateThirdPerson()
@@ -74,5 +81,8 @@ public class CameraSwitcher : MonoBehaviour
 
         firstPersonController.enabled = false;
         thirdPersonController.enabled = true;
+
+        firstPersonGun.SetActive(false);
+        thirdPersonGun.SetActive(true);
     }
 }
