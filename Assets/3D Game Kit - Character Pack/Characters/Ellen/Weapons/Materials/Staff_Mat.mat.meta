@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0e974c7294e486e4cb42482e61c0c4de
+timeCreated: 1494433541
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135217
+  packageName: 3D Game Kit - Character Pack
+  packageVersion: 1.0
+  assetPath: Assets/3D Game Kit - Character Pack/Characters/Ellen/Weapons/Materials/Staff_Mat.mat
+  uploadId: 518974
