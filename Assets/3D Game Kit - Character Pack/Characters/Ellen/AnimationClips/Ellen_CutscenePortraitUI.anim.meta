@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9ce57fdbfc376bd459508e422d3ee71a
+timeCreated: 1504792902
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135217
+  packageName: 3D Game Kit - Character Pack
+  packageVersion: 1.0
+  assetPath: Assets/3D Game Kit - Character Pack/Characters/Ellen/AnimationClips/Ellen_CutscenePortraitUI.anim
+  uploadId: 518974

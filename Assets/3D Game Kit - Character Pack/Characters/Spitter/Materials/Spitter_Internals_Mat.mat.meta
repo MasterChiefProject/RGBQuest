@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ad62a3727ae35064c9db3c79da7bb7b1
+timeCreated: 1493134673
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135217
+  packageName: 3D Game Kit - Character Pack
+  packageVersion: 1.0
+  assetPath: Assets/3D Game Kit - Character Pack/Characters/Spitter/Materials/Spitter_Internals_Mat.mat
+  uploadId: 518974
