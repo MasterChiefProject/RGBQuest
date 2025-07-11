@@ -19,11 +19,14 @@ public class Explode : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet") && intactObject != null)
         {
+            Destroy(other.gameObject);
             intactObject.SetActive(false);
             fracturedObject.SetActive(true);
 
             Vector3 explosionPos = transform.position;
             ExplodeAt(explosionPos);
+
+            DecreaseHealth();
 
             Destroy(intactObject, 0f);
         }
@@ -41,7 +44,12 @@ public class Explode : MonoBehaviour
         Vector3 explosionPos = collision.contacts[0].point;
         ExplodeAt(explosionPos);
 
-        Destroy (intactObject, 0f);
+        if (!collision.gameObject.CompareTag("Bullet"))
+        {
+            DecreaseHealth();
+        }
+
+        Destroy(intactObject, 0f);
     }
 
 
@@ -58,6 +66,14 @@ public class Explode : MonoBehaviour
                 upwardsModifier,
                 ForceMode.Impulse
             );
+        }
+    }
+
+    void DecreaseHealth()
+    {
+        if(gameObject.layer == LayerMask.NameToLayer("Box"))
+        {
+            Globals.health--;
         }
     }
 }

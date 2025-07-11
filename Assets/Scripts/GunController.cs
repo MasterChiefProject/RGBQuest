@@ -21,16 +21,17 @@ public class GunController : MonoBehaviour
     [Header("Effects")]
     public GameObject muzzleFlashPrefab;
 
-    [Header("Volume")]
-    public float audioVolume = 1f;
+    [Header("Sounds")]
+    public AudioSource shootingSound;
+    public float shootingVolume = 1f;
+    public AudioSource noAmmoSound;
+    public float noAmmoVolume = 1f;
 
-    private AudioSource audioSource;
     private Animator animator;
     private float nextFireTime = 0f;
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -41,9 +42,16 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && Globals.ammo > 0)
+        if(Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
-            Shoot();
+            if(Globals.ammo > 0)
+            {
+                Shoot();
+            } 
+            else
+            {
+                noAmmoSound.PlayOneShot(noAmmoSound.clip, noAmmoVolume);
+            }
             nextFireTime = Time.time + fireRate;
         }
     }
@@ -78,8 +86,9 @@ public class GunController : MonoBehaviour
             Destroy(flash, 0.5f);
         }
 
-        audioSource.PlayOneShot(audioSource.clip, audioVolume);
+        shootingSound.PlayOneShot(shootingSound.clip, shootingVolume);
         Globals.ammo--;
+
         updateAmmoUI();
     }
 

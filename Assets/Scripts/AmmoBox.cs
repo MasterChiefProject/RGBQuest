@@ -22,12 +22,15 @@ public class AmmoBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Globals.ammo += ammoInBox;
-        if(Globals.ammo > Globals.magazineCapacity)
-            Globals.ammo = Globals.magazineCapacity;
+        if (other.CompareTag("Player"))
+        {
+            Globals.ammo += ammoInBox;
+            if (Globals.ammo > Globals.magazineCapacity)
+                Globals.ammo = Globals.magazineCapacity;
 
-        UpdateAmmoUI();
-        StartCoroutine(PlayAndDestroy());
+            UpdateAmmoUI();
+            StartCoroutine(PlayAndDestroy());
+        }
     }
 
     IEnumerator PlayAndDestroy()
