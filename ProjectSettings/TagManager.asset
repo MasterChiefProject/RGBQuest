@@ -10,6 +10,10 @@ TagManager:
   - Purple
   - Blue
   - Red
+  - Box
+  - FxTemporaire
+  - Rope
+  - Bullet
   layers:
   - Default
   - TransparentFX
