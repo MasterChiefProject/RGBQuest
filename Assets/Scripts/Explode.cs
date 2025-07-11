@@ -4,8 +4,8 @@ using UnityEngine;
 public class Explode : MonoBehaviour
 {
     [Header("Intact cube and fractured cube")]
-    public GameObject intactCube;
-    public GameObject fracturedCube;
+    public GameObject intactObject;
+    public GameObject fracturedObject;
 
     [Header("Explosion settings")]
     public float explosionForce = 500f;
@@ -17,15 +17,15 @@ public class Explode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet") && intactCube != null)
+        if (other.gameObject.CompareTag("Bullet") && intactObject != null)
         {
-            intactCube.SetActive(false);
-            fracturedCube.SetActive(true);
+            intactObject.SetActive(false);
+            fracturedObject.SetActive(true);
 
             Vector3 explosionPos = transform.position;
             ExplodeAt(explosionPos);
 
-            Destroy(intactCube, 0f);
+            Destroy(intactObject, 0f);
         }
     }
 
@@ -33,23 +33,23 @@ public class Explode : MonoBehaviour
     {
         float impactForce = collision.impulse.magnitude;
 
-        if (impactForce < minImpactForce || !intactCube) return;
+        if (impactForce < minImpactForce || !intactObject) return;
 
-        intactCube.SetActive(false);
-        fracturedCube.SetActive(true);
+        intactObject.SetActive(false);
+        fracturedObject.SetActive(true);
 
         Vector3 explosionPos = collision.contacts[0].point;
         ExplodeAt(explosionPos);
 
-        Destroy (intactCube, 0f);
+        Destroy (intactObject, 0f);
     }
 
 
     private void ExplodeAt(Vector3 explosionPos)
     {
-        foreach (var rb in fracturedCube.GetComponentsInChildren<Rigidbody>())
+        foreach (var rb in fracturedObject.GetComponentsInChildren<Rigidbody>())
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.AddExplosionForce(
                 explosionForce,
