@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
     [Header("Setup")]
     public GameObject bulletPrefab;
     public Transform muzzlePoint;
+
+    [Header("Ammo UI")]
+    public Text ammoText;
 
     [Header("Firing")]
     public float bulletSpeed = 30f;
@@ -30,9 +34,14 @@ public class GunController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        updateAmmoUI();
+    }
+
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        if(Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && Globals.ammo > 0)
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
@@ -70,6 +79,13 @@ public class GunController : MonoBehaviour
         }
 
         audioSource.PlayOneShot(audioSource.clip, audioVolume);
+        Globals.ammo--;
+        updateAmmoUI();
+    }
+
+    void updateAmmoUI()
+    {
+        ammoText.text = Globals.ammo.ToString() + '/' + Globals.magazineCapacity.ToString();
     }
 
 }
