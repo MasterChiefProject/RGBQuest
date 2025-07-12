@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartButtonHandle()
     {
+        Globals.resetGlobalsToDefaults();
         SceneManager.LoadScene("Level1");
     }
 
