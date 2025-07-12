@@ -2581,11 +2581,11 @@ PrefabInstance:
       objectReference: {fileID: 1123082908}
     - target: {fileID: 2968552210021883083, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19999695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2968552210021883083, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4775526527508244207, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3184,6 +3184,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2231286172252462742, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
+      propertyPath: nextScene
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 5599951319205620725, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
       propertyPath: m_Name
       value: PortalDoor

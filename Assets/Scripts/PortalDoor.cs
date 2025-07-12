@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PortalDoor : MonoBehaviour
 {
-
+    [Header("Audio Clip")]
     public AudioClip openAudioClip;
 
     private AudioSource audioSource;
