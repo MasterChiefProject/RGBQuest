@@ -36,7 +36,7 @@ public class HoldToPickup : MonoBehaviour
     /*────────────────────── Inspector ▸ Tuning ───────────────────────*/
     [Header("Tuning")]
     [SerializeField] private float maxGrabDistance = 5f;
-    [SerializeField] private float throwForce = 500f;
+    [SerializeField] private float throwForce = 2f;
     [SerializeField] private float rotateSensitivity = 1f;
     [SerializeField] private LayerMask grabbableMask = ~0;   // layers we can grab
 

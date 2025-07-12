@@ -19,6 +19,7 @@ public class PressurePlate : MonoBehaviour
             animator.SetBool("isPressed", true);
             targetLamp.LightUp();
             isPressed = true;
+            updatePressurePlateState(isPressed);
         }
     }
 
@@ -29,7 +30,26 @@ public class PressurePlate : MonoBehaviour
             animator.SetBool("isPressed", false);
             targetLamp.LightDown();
             isPressed = false;
+            updatePressurePlateState(isPressed);
         }
     }
     
+    private void updatePressurePlateState(bool state)
+    {
+        switch(matchColor)
+        {
+            case "Yellow":
+                Globals.yellowPressurePlateActive = state;
+                break;
+            case "Blue":
+                Globals.bluePressurePlateActive = state;
+                break;
+            case "Red":
+                Globals.redPressurePlateActive = state;
+                break;
+            case "Purple":
+                Globals.purplePressurePlateActive = state;
+                break;
+        }
+    }
 }

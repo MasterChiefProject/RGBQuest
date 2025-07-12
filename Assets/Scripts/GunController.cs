@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
     public Transform muzzlePoint;
 
     [Header("Ammo UI")]
+    public Canvas gunCanvas;
     public Text ammoText;
 
     [Header("Firing")]
@@ -27,12 +28,14 @@ public class GunController : MonoBehaviour
     public AudioSource noAmmoSound;
     public float noAmmoVolume = 1f;
 
+    private Renderer[] renderers;
     private Animator animator;
     private float nextFireTime = 0f;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        renderers = GetComponentsInChildren<Renderer>();
     }
 
     void Start()
@@ -42,12 +45,44 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        if (Globals.hasGun && Globals.gunActive)
         {
-            if(Globals.ammo > 0)
+            ShowGun();
+            CheckFireInput();
+        }
+        else
+        {
+            HideGun();
+        }
+    }
+
+    void ShowGun()
+    {
+        gunCanvas.gameObject.SetActive(true);
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = true;
+        }
+    }
+
+    void HideGun()
+    {
+        gunCanvas.gameObject.SetActive(false);
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
+    }
+
+    void CheckFireInput()
+    {
+
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        {
+            if (Globals.ammo > 0)
             {
                 Shoot();
-            } 
+            }
             else
             {
                 noAmmoSound.PlayOneShot(noAmmoSound.clip, noAmmoVolume);

@@ -11,6 +11,8 @@ TagManager:
   - Blue
   - Red
   - Node
+  - Bullet
+  - Rope
   layers:
   - Default
   - TransparentFX

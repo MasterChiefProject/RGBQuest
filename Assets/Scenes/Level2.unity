@@ -3496,6 +3496,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 113512, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
   m_PrefabInstance: {fileID: 1654643871}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &345246179 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6082335797828150039, guid: 86c2b54bad5bf834bb4a749f67747d06, type: 3}
+  m_PrefabInstance: {fileID: 644020608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &348158064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14748,6 +14753,10 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1441534803}
+    - target: {fileID: 1663000267551520699, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
+      propertyPath: gunCanvas
+      value: 
+      objectReference: {fileID: 345246179}
     - target: {fileID: 2968552210021883083, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.19999473
@@ -14768,6 +14777,10 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1441534803}
+    - target: {fileID: 5475005288123585397, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
+      propertyPath: gunCanvas
+      value: 
+      objectReference: {fileID: 345246179}
     - target: {fileID: 8294067407623575534, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_Name
       value: Player
