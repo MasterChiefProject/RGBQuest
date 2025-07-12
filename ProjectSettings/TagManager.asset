@@ -10,6 +10,7 @@ TagManager:
   - Purple
   - Blue
   - Red
+  - Node
   layers:
   - Default
   - TransparentFX
