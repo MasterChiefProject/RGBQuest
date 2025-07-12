@@ -14765,6 +14765,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -3.9999948
       objectReference: {fileID: 0}
+    - target: {fileID: 4458688712241041939, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 257
+      objectReference: {fileID: 0}
     - target: {fileID: 4775526527508244207, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.19999473
