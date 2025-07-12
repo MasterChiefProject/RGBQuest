@@ -10,10 +10,7 @@ TagManager:
   - Purple
   - Blue
   - Red
-  - Box
-  - FxTemporaire
-  - Rope
-  - Bullet
+  - Node
   layers:
   - Default
   - TransparentFX
@@ -23,7 +20,7 @@ TagManager:
   - UI
   - Door
   - Box
-  - 
+  - 'Maze '
   - 
   - 
   - 
