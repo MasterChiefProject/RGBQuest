@@ -17,7 +17,7 @@ public class PortalDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !isOpen)
+        if(other.CompareTag("Player") && !isOpen && Globals.checkAllPressurePlatesActive())
         {
             animator.SetBool("isOpen", true);
             audioSource.PlayOneShot(openAudioClip);
@@ -27,7 +27,7 @@ public class PortalDoor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && isOpen)
+        if (other.CompareTag("Player") && isOpen && Globals.checkAllPressurePlatesActive())
         {
             animator.SetBool("isOpen", false);
             audioSource.PlayOneShot(openAudioClip);
