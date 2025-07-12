@@ -256,7 +256,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2989000923634411228, guid: 44cdcd55c8562cc46b31e272eb09fc5b, type: 3}
   muzzlePoint: {fileID: 828295681593527542}
   ammoText: {fileID: 0}
-  bulletSpeed: 30
+  bulletSpeed: 5
   fireRate: 0.5
   bulletRotationOffset: {x: 90, y: 0, z: 0}
   flashRotationOffset: {x: 0, y: 90, z: 90}
