@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4049388108656417258}
   - component: {fileID: 7236047028643727957}
   m_Layer: 7
-  m_Name: ExplodingCube (2)
+  m_Name: ExplodingCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
