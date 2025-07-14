@@ -2360,6 +2360,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1263724730215062063, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263724730215062063, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263724730215062063, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263724730215062063, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2407,9 +2419,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1431621223904942749, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4652125773222701558, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
       propertyPath: m_Name
       value: InfoCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761911082452296408, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761911082452296408, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761911082452296408, guid: f4491f47121fb8d41a0644bcbbceb2b8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
