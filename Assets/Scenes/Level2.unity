@@ -212,6 +212,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 102204, guid: 4392445a5fc6d2349b996911abccbdc7, type: 3}
   m_PrefabInstance: {fileID: 40667492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &22272304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22272306}
+  - component: {fileID: 22272305}
+  m_Layer: 0
+  m_Name: Level2Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &22272305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22272304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9215c4a796d72c04a968c7e5bfece9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &22272306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22272304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 148.0769, y: -7.440094, z: 43.208576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &24970002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9580,10 +9624,11 @@ GameObject:
   - component: {fileID: 1222036296}
   - component: {fileID: 1222036295}
   - component: {fileID: 1222036292}
+  - component: {fileID: 1222036299}
   - component: {fileID: 1222036291}
   m_Layer: 0
   m_Name: Ghost_Purple
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9694,6 +9739,29 @@ Transform:
   - {fileID: 1444023650}
   m_Father: {fileID: 1417958133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1222036299
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222036290}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1229668574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 113512, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
@@ -14767,7 +14835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4458688712241041939, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: obstructionMask.m_Bits
-      value: 257
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4775526527508244207, guid: 3b4730df39ce9a54f94d18c22f2714dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15964,10 +16032,11 @@ GameObject:
   - component: {fileID: 2003327162}
   - component: {fileID: 2003327161}
   - component: {fileID: 2003327158}
+  - component: {fileID: 2003327165}
   - component: {fileID: 2003327157}
   m_Layer: 0
   m_Name: Ghost_Red
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16078,6 +16147,29 @@ Transform:
   - {fileID: 349355282}
   m_Father: {fileID: 1417958133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2003327165
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003327156}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2012391143
 GameObject:
   m_ObjectHideFlags: 0
@@ -16360,10 +16452,11 @@ GameObject:
   - component: {fileID: 2036037880}
   - component: {fileID: 2036037879}
   - component: {fileID: 2036037876}
+  - component: {fileID: 2036037883}
   - component: {fileID: 2036037875}
   m_Layer: 0
   m_Name: Ghost_Yellow
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16474,6 +16567,29 @@ Transform:
   - {fileID: 1242448956}
   m_Father: {fileID: 1417958133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2036037883
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036037874}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2051979907
 GameObject:
   m_ObjectHideFlags: 0
@@ -17270,10 +17386,11 @@ GameObject:
   - component: {fileID: 2104983134}
   - component: {fileID: 2104983133}
   - component: {fileID: 2104983130}
+  - component: {fileID: 2104983137}
   - component: {fileID: 2104983129}
   m_Layer: 0
   m_Name: Ghost_Blue
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17384,6 +17501,29 @@ Transform:
   - {fileID: 260403604}
   m_Father: {fileID: 1417958133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2104983137
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104983128}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2108103671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 113512, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
@@ -17570,3 +17710,4 @@ SceneRoots:
   - {fileID: 1417958133}
   - {fileID: 1312859546}
   - {fileID: 1295035826}
+  - {fileID: 22272306}

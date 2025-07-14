@@ -1,80 +1,96 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class Explode : MonoBehaviour
 {
-    [Header("Intact cube and fractured cube")]
-    public GameObject intactObject;
-    public GameObject fracturedObject;
 
-    [Header("Explosion settings")]
-    public float explosionForce = 500f;
-    public float explosionRadius = 3f;
-    public float upwardsModifier = 2f;
-    public bool shouldReset = true;
+    [Header("Intact & Fractured meshes")]
+    [SerializeField] GameObject intactObject;
+    [SerializeField] GameObject fracturedObject;
 
-    [Header("Ground impact settings")]
-    public float minImpactForce = 10f;
-    public string bulletTag = "Bullet";
-    public string groundTag = "Ground";
+    [Header("Explosion")]
+    [SerializeField] float explosionForce = 500f;
+    [SerializeField] float explosionRadius = 3f;
+    [SerializeField] float upwardsModifier = 2f;
 
-    [Header("Seconds to wait before resetting the cube")]
-    public float resetDelay = 5f;
+    [Header("Ground impact")]
+    [SerializeField] float minImpactForce = 10f;
+    [SerializeField] string bulletTag = "Bullet";
+    [SerializeField] string groundTag = "Ground";
 
-    private bool hasExploded;
-    private Collider parentCol;
-    private Rigidbody parentRb;
-    private Coroutine resetRoutine;
-    private Vector3 savedPos;
-    private Quaternion savedRot;
-    private Vector3 intactSavedLocalPos;
-    private Quaternion intactSavedLocalRot;
-    private Dictionary<Transform, (Vector3, Quaternion)> shardData;
+    [Header("Reset")]
+    [SerializeField] bool shouldReset = true;
+    [SerializeField] float resetDelay = 5f;
+
+    /* ─────────────────────────── internals ────────────────────────── */
+    bool exploded;
+    Collider col;
+    Rigidbody rb;
+    Coroutine resetRoutine;
+    Vector3 startPos;
+    Quaternion startRot;
+    Vector3 intactLocalPos;
+    Quaternion intactLocalRot;
+    readonly Dictionary<Transform, (Vector3 pos, Quaternion rot)> shardPose =
+        new Dictionary<Transform, (Vector3, Quaternion)>();
 
     void Awake()
     {
-        parentCol = GetComponent<Collider>();
-        parentRb = GetComponent<Rigidbody>();
-        savedPos = transform.position;
-        savedRot = transform.rotation;
-        intactSavedLocalPos = intactObject.transform.localPosition;
-        intactSavedLocalRot = intactObject.transform.localRotation;
-        shardData = new Dictionary<Transform, (Vector3, Quaternion)>();
-        foreach (var t in fracturedObject.GetComponentsInChildren<Transform>())
-            shardData[t] = (t.localPosition, t.localRotation);
+        col = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
+
+        startPos = transform.position;
+        startRot = transform.rotation;
+        intactLocalPos = intactObject.transform.localPosition;
+        intactLocalRot = intactObject.transform.localRotation;
+
+        // includeInactive = true because fracturedObject starts inactive
+        foreach (var t in fracturedObject.GetComponentsInChildren<Transform>(true))
+            shardPose[t] = (t.localPosition, t.localRotation);
+
         fracturedObject.SetActive(false);
     }
 
+    /* ────────────── collisions ────────────── */
     void OnCollisionEnter(Collision c)
     {
-        if (hasExploded) return;
+        if (exploded) return;
+
         if (c.gameObject.CompareTag(bulletTag))
         {
             Destroy(c.gameObject);
-            ExplodeAt(c.contacts[0].point);
+            ExplodeAt(c.GetContact(0).point);
         }
-        else if (c.gameObject.CompareTag(groundTag) && c.impulse.magnitude >= minImpactForce)
+        else if (c.gameObject.CompareTag(groundTag) &&
+                 c.impulse.magnitude >= minImpactForce)
         {
-            ExplodeAt(c.contacts[0].point);
+            ExplodeAt(c.GetContact(0).point);
         }
     }
 
+    /* ────────────── main explode logic ────────────── */
     void ExplodeAt(Vector3 pos)
     {
-        hasExploded = true;
-        parentCol.enabled = false;
-        parentRb.velocity = Vector3.zero;
-        parentRb.angularVelocity = Vector3.zero;
-        parentRb.useGravity = false;
+        exploded = true;
+
+        col.enabled = false;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.useGravity = false;
+
         intactObject.SetActive(false);
         fracturedObject.SetActive(true);
-        foreach (var rb in fracturedObject.GetComponentsInChildren<Rigidbody>())
+
+        foreach (var frag in fracturedObject.GetComponentsInChildren<Rigidbody>())
         {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.AddExplosionForce(explosionForce, pos, explosionRadius, upwardsModifier, ForceMode.Impulse);
+            frag.linearVelocity = Vector3.zero;
+            frag.angularVelocity = Vector3.zero;
+            frag.AddExplosionForce(explosionForce, pos, explosionRadius,
+                                   upwardsModifier, ForceMode.Impulse);
         }
+
         if (shouldReset)
         {
             if (resetRoutine != null) StopCoroutine(resetRoutine);
@@ -82,26 +98,31 @@ public class Explode : MonoBehaviour
         }
     }
 
+    /* ────────────── reset coroutine ────────────── */
     IEnumerator ResetAfterDelay()
     {
         yield return new WaitForSeconds(resetDelay);
-        parentRb.velocity = Vector3.zero;
-        parentRb.angularVelocity = Vector3.zero;
-        parentRb.MovePosition(savedPos);
-        parentRb.MoveRotation(savedRot);
-        parentRb.Sleep();
-        intactObject.transform.localPosition = intactSavedLocalPos;
-        intactObject.transform.localRotation = intactSavedLocalRot;
-        intactObject.SetActive(true);
-        foreach (var kvp in shardData)
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.position = startPos;
+        rb.rotation = startRot;
+        rb.Sleep();
+
+        intactObject.transform.localPosition = intactLocalPos;
+        intactObject.transform.localRotation = intactLocalRot;
+
+        foreach (var kvp in shardPose)
         {
-            var t = kvp.Key;
-            t.localPosition = kvp.Value.Item1;
-            t.localRotation = kvp.Value.Item2;
+            kvp.Key.localPosition = kvp.Value.pos;
+            kvp.Key.localRotation = kvp.Value.rot;
         }
+
         fracturedObject.SetActive(false);
-        parentCol.enabled = true;
-        parentRb.useGravity = true;
-        hasExploded = false;
+        intactObject.SetActive(true);
+
+        col.enabled = true;
+        rb.useGravity = true;
+        exploded = false;
     }
 }
