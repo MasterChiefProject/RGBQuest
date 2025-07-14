@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class Explode : MonoBehaviour
 {
+    public event System.Action Exploded;
+
 
     [Header("Intact & Fractured meshes")]
     [SerializeField] GameObject intactObject;
@@ -74,6 +76,8 @@ public class Explode : MonoBehaviour
     void ExplodeAt(Vector3 pos)
     {
         exploded = true;
+
+        Exploded?.Invoke();
 
         col.enabled = false;
         rb.linearVelocity = Vector3.zero;

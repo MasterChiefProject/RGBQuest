@@ -27,6 +27,8 @@
 
 public class HoldToPickup : MonoBehaviour
 {
+    private Transform originalParent;
+
     /*───────────────────── Inspector ▸ References ─────────────────────*/
     [Header("References")]
     [SerializeField] private GameObject playerRoot;   // object with the player collider
@@ -156,6 +158,8 @@ public class HoldToPickup : MonoBehaviour
         heldBody.isKinematic = true;
         heldBody.interpolation = RigidbodyInterpolation.Interpolate;
 
+        //Parent...
+        originalParent = heldBody.transform.parent;
         heldBody.transform.SetParent(holdPoint, false);
         heldBody.transform.localPosition = Vector3.zero;
         heldBody.transform.localRotation = Quaternion.identity;
@@ -164,22 +168,41 @@ public class HoldToPickup : MonoBehaviour
             Physics.IgnoreCollision(heldCol, playerCol, true);
     }
 
+    /* ───────── Drop ───────── */
     private void Drop()
     {
-        if (!heldBody) return;
+        if (!heldBody) return;               // safety
+
         RestoreCollision();
         heldBody.isKinematic = false;
-        heldBody.transform.SetParent(null, true);
+
+        // restore hierarchy
+        if (originalParent)
+            heldBody.transform.SetParent(originalParent, true);
+        else
+            heldBody.transform.SetParent(null, true);
+
+        originalParent = null;               // clear for next grab
         heldBody = null;
         heldCol = null;
     }
 
+    /* ───────── Throw ───────── */
     private void Throw()
     {
-        if (!heldBody) return;
+        if (!heldBody) return;               // safety
+
         RestoreCollision();
         heldBody.isKinematic = false;
-        heldBody.transform.SetParent(null, true);
+
+        // restore hierarchy
+        if (originalParent)
+            heldBody.transform.SetParent(originalParent, true);
+        else
+            heldBody.transform.SetParent(null, true);
+
+        originalParent = null;               // clear for next grab
+
         heldBody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         heldBody = null;
         heldCol = null;
