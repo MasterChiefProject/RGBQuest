@@ -8,7 +8,7 @@ public class Pole : MonoBehaviour
     public float respawnDelay = 5f;
     public string watchForChild = "YellowCubeRope";
 
-    bool respawning;
+    bool respawning = false;
 
     void Update()
     {

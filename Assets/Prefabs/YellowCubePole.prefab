@@ -1024,10 +1024,10 @@ MonoBehaviour:
   explosionForce: 2
   explosionRadius: 2
   upwardsModifier: 2
-  shouldReset: 0
   minImpactForce: 20
   bulletTag: Bullet
   groundTag: Ground
+  shouldReset: 0
   resetDelay: 5
 --- !u!65 &856751712844911138
 BoxCollider:
@@ -1640,6 +1640,7 @@ GameObject:
   - component: {fileID: 1083430063771769549}
   - component: {fileID: 8168895985336860441}
   - component: {fileID: 8268602837041744080}
+  - component: {fileID: 2725672513633825461}
   m_Layer: 0
   m_Name: YellowCubeRope
   m_TagString: Rope
@@ -1843,6 +1844,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2725672513633825461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907425185157386841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722a56f17fe1fd742a6de5db73948a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7036406901536577425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,7 +2111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8594160243973616293}
-  - component: {fileID: 4997612316006910434}
+  - component: {fileID: 1669784218896056159}
   m_Layer: 0
   m_Name: YellowCubePole
   m_TagString: Untagged
@@ -2125,7 +2138,7 @@ Transform:
   - {fileID: 3349847904222323180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4997612316006910434
+--- !u!114 &1669784218896056159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2134,12 +2147,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7762147576828205155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77dfcbf5cec2df4bac325442b9278a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fc4b109c9afbc44f951bd7c8557712e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropePrefab: {fileID: 7762147576828205155}
-  respawnDelay: 5
-  watchForChild: YellowCubeRope
 --- !u!1 &8058228280713885771
 GameObject:
   m_ObjectHideFlags: 0
