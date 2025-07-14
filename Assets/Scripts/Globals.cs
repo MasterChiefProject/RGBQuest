@@ -15,8 +15,6 @@ public class Globals : MonoBehaviour
     public static bool redPressurePlateActive = false;
     public static bool bluePressurePlateActive = false;
     public static bool purplePressurePlateActive = false;
-
-
     public static void resetGlobalsToDefaults()
     {
         health = 3;
@@ -34,9 +32,9 @@ public class Globals : MonoBehaviour
 
     public static bool checkAllPressurePlatesActive()
     {
-        return yellowPressurePlateActive && 
+        return yellowPressurePlateActive &&
             redPressurePlateActive &&
-            bluePressurePlateActive && 
+            bluePressurePlateActive &&
             purplePressurePlateActive;
     }
 

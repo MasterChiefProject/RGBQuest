@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -340,7 +340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -477,7 +477,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 3090559615777164885}
   m_Layer: 7
   m_Name: Cube
-  m_TagString: Yellow
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,7 +613,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -900,7 +900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -985,8 +985,8 @@ GameObject:
   - component: {fileID: 6945120997133702384}
   - component: {fileID: 8801136774398483285}
   m_Layer: 7
-  m_Name: ExplodindYellowCube
-  m_TagString: Yellow
+  m_Name: ExplodindRedCube
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a35ba4c153ef6044853678c65373f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetterName: YellowPoleResetter
+  resetterName: RedPoleResetter
 --- !u!1 &4442760814872563984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1157,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1294,7 +1294,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1431,7 +1431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1568,7 +1568,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1655,7 +1655,7 @@ GameObject:
   - component: {fileID: 8168895985336860441}
   - component: {fileID: 8268602837041744080}
   m_Layer: 0
-  m_Name: YellowCubeRope
+  m_Name: RedCubeRope
   m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,7 +1923,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2114,7 +2114,7 @@ GameObject:
   - component: {fileID: 8594160243973616293}
   - component: {fileID: 1669784218896056159}
   m_Layer: 0
-  m_Name: YellowCubePole
+  m_Name: RedCubePole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2217,7 +2217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1b7893b4d315244f8294b5eed6bcc3b, type: 2}
+  - {fileID: 2100000, guid: 8628e16069bebe94092eb673b1550871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
