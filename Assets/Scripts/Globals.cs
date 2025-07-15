@@ -7,7 +7,7 @@ public class Globals : MonoBehaviour
     public static bool gunActive = true; // TODO: when grabbing a cube - deactivate the gun and canvas
 
     public static int health = 3;
-    public static int ammo = 3;
+    public static int ammo = 1;
     public static readonly int magazineCapacity = 10;
     public static Transform respawnPoint;
 
