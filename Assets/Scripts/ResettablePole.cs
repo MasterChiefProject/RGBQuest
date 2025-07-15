@@ -37,7 +37,7 @@ public class ResettablePole : MonoBehaviour
             t.localScale = data.localScale;
             t.gameObject.SetActive(data.active);
             var rb = t.GetComponent<Rigidbody>();
-            if (rb) { rb.velocity = rb.angularVelocity = Vector3.zero; rb.Sleep(); }
+            if (rb) { rb.linearVelocity = rb.angularVelocity = Vector3.zero; rb.Sleep(); }
         }
     }
 }
