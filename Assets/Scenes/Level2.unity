@@ -6258,7 +6258,7 @@ GameObject:
   - component: {fileID: 743407547}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8474,7 +8474,7 @@ GameObject:
   - component: {fileID: 1045184782}
   m_Layer: 8
   m_Name: MazeWalkableVolume1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10696,7 +10696,7 @@ GameObject:
   - component: {fileID: 1321436756}
   m_Layer: 8
   m_Name: MazeWalkableVolume3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12024,7 +12024,7 @@ GameObject:
   - component: {fileID: 1464757070}
   m_Layer: 8
   m_Name: MazeAreas
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12462,7 +12462,7 @@ GameObject:
   - component: {fileID: 1572502890}
   m_Layer: 8
   m_Name: MazeWalkableVolume2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16926,7 +16926,7 @@ GameObject:
   - component: {fileID: 2081102892}
   m_Layer: 8
   m_Name: MazeWalls
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
