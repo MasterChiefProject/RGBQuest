@@ -1,9 +1,14 @@
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AmmoBox : MonoBehaviour
 {
+    [Header("Information display UI")]
+    public TextMeshProUGUI textDisplay;
+
     [Header("Ammo in box")]
     public int ammoInBox = 3;
 
@@ -24,12 +29,27 @@ public class AmmoBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Globals.ammo += ammoInBox;
-            if (Globals.ammo > Globals.magazineCapacity)
-                Globals.ammo = Globals.magazineCapacity;
+            if(Globals.ammo < Globals.magazineCapacity)
+            {
+                Globals.ammo += ammoInBox;
+                if (Globals.ammo > Globals.magazineCapacity)
+                    Globals.ammo = Globals.magazineCapacity;
 
-            UpdateAmmoUI();
-            StartCoroutine(PlayAndDestroy());
+                UpdateAmmoUI();
+                StartCoroutine(PlayAndDestroy());
+            } 
+            else
+            {
+                textDisplay.text = "Full Ammo";
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            textDisplay.text = "";
         }
     }
 
