@@ -1,51 +1,59 @@
-﻿using System.Collections;
+using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider), typeof(AudioSource))]
 public class AmmoBox : MonoBehaviour
 {
-    [Header("Box contents")]
-    [SerializeField] private int ammoInBox = 3;
+    [Header("Information display UI")]
+    public TextMeshProUGUI textDisplay;
 
-    [Header("UI")]
-    [SerializeField] private Text ammoTextUI;
+    [Header("Ammo in box")]
+    public int ammoInBox = 3;
 
-    [Header("Audio")]
-    [SerializeField] private float audioVolume = 1f;
+    [Header("Ammo UI")]
+    public Text ammoTextUI;
+
+    [Header("Audio Volume")]
+    public float audioVolume = 1f;
 
     private AudioSource ammoSound;
-    private Collider myTrigger;
 
-    private bool picked;        // ← guard flag
-
-    /* ─────────────────────────────── */
-    private void Awake()
+    void Awake()
     {
         ammoSound = GetComponent<AudioSource>();
-        myTrigger = GetComponent<Collider>();
     }
 
-    /* ─────────────────────────────── */
     private void OnTriggerEnter(Collider other)
     {
-        if (picked) return;                        // already collected
-
         if (other.CompareTag("Player"))
         {
-            picked = true;                         // lock out further hits
-            myTrigger.enabled = false;             // optional, extra safety
+            if(Globals.ammo < Globals.magazineCapacity)
+            {
+                Globals.ammo += ammoInBox;
+                if (Globals.ammo > Globals.magazineCapacity)
+                    Globals.ammo = Globals.magazineCapacity;
 
-            Globals.ammo = Mathf.Min(Globals.ammo + ammoInBox,
-                                     Globals.magazineCapacity);
-
-            UpdateAmmoUI();
-            StartCoroutine(PlayAndDestroy());
+                UpdateAmmoUI();
+                StartCoroutine(PlayAndDestroy());
+            } 
+            else
+            {
+                textDisplay.text = "Full Ammo";
+            }
         }
     }
 
-    /* ─────────────────────────────── */
-    private IEnumerator PlayAndDestroy()
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            textDisplay.text = "";
+        }
+    }
+
+    IEnumerator PlayAndDestroy()
     {
         ammoSound.PlayOneShot(ammoSound.clip, audioVolume);
         yield return new WaitForSeconds(ammoSound.clip.length);
@@ -54,6 +62,6 @@ public class AmmoBox : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
-        ammoTextUI.text = $"{Globals.ammo}/{Globals.magazineCapacity}";
+        ammoTextUI.text = Globals.ammo.ToString() + "/" + Globals.magazineCapacity.ToString();
     }
 }

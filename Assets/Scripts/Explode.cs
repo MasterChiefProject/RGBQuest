@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class Explode : MonoBehaviour
@@ -94,11 +95,24 @@ public class Explode : MonoBehaviour
             frag.AddExplosionForce(explosionForce, pos, explosionRadius,
                                    upwardsModifier, ForceMode.Impulse);
         }
+        if(intactObject.layer == LayerMask.NameToLayer("Box"))
+        {
+            DecreaseHealth();
+        }
 
         if (shouldReset)
         {
             if (resetRoutine != null) StopCoroutine(resetRoutine);
             resetRoutine = StartCoroutine(ResetAfterDelay());
+        }
+    }
+
+    void DecreaseHealth()
+    {
+        Globals.health--;
+        if (Globals.health <= 0)
+        {
+            StartCoroutine(DeathAfterSeconds());
         }
     }
 
@@ -128,5 +142,11 @@ public class Explode : MonoBehaviour
         col.enabled = true;
         rb.useGravity = true;
         exploded = false;
+    }
+
+    IEnumerator DeathAfterSeconds()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("DeathMenu");
     }
 }
