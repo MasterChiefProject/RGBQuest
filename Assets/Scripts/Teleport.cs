@@ -10,6 +10,13 @@ public class Teleport : MonoBehaviour
     {
         if (other.CompareTag("Player") && Globals.checkAllPressurePlatesActive())
         {
+            if (nextScene.Equals("Level2"))
+            {
+                Globals.ammo = 1;
+                Globals.hasGun = true;
+                Globals.gunActive = true;
+            }
+
             Globals.resetCubesForNextLevel();
             SceneManager.LoadScene(nextScene);
         }

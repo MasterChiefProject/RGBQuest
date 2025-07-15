@@ -212,50 +212,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 102204, guid: 4392445a5fc6d2349b996911abccbdc7, type: 3}
   m_PrefabInstance: {fileID: 40667492}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &22272304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 22272306}
-  - component: {fileID: 22272305}
-  m_Layer: 0
-  m_Name: Level2Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &22272305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22272304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9215c4a796d72c04a968c7e5bfece9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &22272306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22272304}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 148.0769, y: -7.440094, z: 43.208576}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &24970002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2075,6 +2031,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 448950, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
   m_PrefabInstance: {fileID: 193628218}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &197551256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1901691688586975530, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_text
+      value: Maze
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 107.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17364825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_text
+      value: "Welcome to the maze.\nfind the cubes and place them on the correct
+        platforms. \n"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c459065178e0625458da4a422fb39513, type: 3}
 --- !u!1 &202496355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 113512, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
@@ -6094,6 +6116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2231286172252462742, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
+      propertyPath: nextScene
+      value: Level3
+      objectReference: {fileID: 0}
     - target: {fileID: 5599951319205620725, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
       propertyPath: m_Name
       value: PortalDoor
@@ -13451,6 +13477,75 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 113512, guid: 76d0990ce6d878544bdb1bc9f388dbce, type: 3}
   m_PrefabInstance: {fileID: 1859077345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1740384969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1901691688586975530, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_text
+      value: guide
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.08715578
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9961947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202551663315816510, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_Name
+      value: Sign (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
+      propertyPath: m_text
+      value: 'avoid touching the ghosts!
+
+        touching them reduces your health
+        and respawns you. shooting the cube explodes it, decreases your health and
+        then it respawns - don''t worry.'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c459065178e0625458da4a422fb39513, type: 3}
 --- !u!1 &1740600735
 GameObject:
   m_ObjectHideFlags: 0
@@ -17802,5 +17897,6 @@ SceneRoots:
   - {fileID: 1417958133}
   - {fileID: 1312859546}
   - {fileID: 1295035826}
-  - {fileID: 22272306}
   - {fileID: 1740600736}
+  - {fileID: 197551256}
+  - {fileID: 1740384969}
