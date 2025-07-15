@@ -76,8 +76,7 @@ public class GunController : MonoBehaviour
 
     void CheckFireInput()
     {
-
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && Globals.gunActive)
         {
             if (Globals.ammo > 0)
             {

@@ -1,12 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]   // or whatever you move with
+[RequireComponent(typeof(CharacterController))]
 public class PlayerSpawn : MonoBehaviour
 {
-
     void Awake()
     {
-        // record the player’s starting position the very first time
         if (Globals.respawnPoint == null)
         {
             var holder = new GameObject("RespawnPoint").transform;
@@ -15,13 +13,16 @@ public class PlayerSpawn : MonoBehaviour
         }
     }
 
+    [SerializeField] private Transform foreignSpawn;
+
     public void TeleportToSpawn()
     {
-        // disable controller during teleport to avoid unwanted physics
         var cc = GetComponent<CharacterController>();
         if (cc) cc.enabled = false;
 
-        transform.position = Globals.respawnPoint.position;
+        Transform chosen = (Random.value < 0.5f) ? Globals.respawnPoint : foreignSpawn;
+
+        transform.position = chosen.position;
 
         if (cc) cc.enabled = true;
     }

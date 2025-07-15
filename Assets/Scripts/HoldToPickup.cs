@@ -70,7 +70,10 @@ public class HoldToPickup : MonoBehaviour
         {
             if (heldBody)
             {
-                if (canDrop) Drop();
+                if (canDrop)
+                {
+                    Drop();
+                }
             }
             else TryGrab();
         }
@@ -82,8 +85,10 @@ public class HoldToPickup : MonoBehaviour
         heldBody.transform.rotation = holdPoint.rotation;
 
         /* Throw ---------------------------------------------------------*/
-        if (Input.GetMouseButtonDown(0) && canDrop) Throw();
-
+        if (Input.GetKeyDown(KeyCode.T) && canDrop)
+        {
+            Throw();
+        }
         /* Rotate mode ---------------------------------------------------*/
         if (Input.GetKey(KeyCode.R))
         {
@@ -166,6 +171,8 @@ public class HoldToPickup : MonoBehaviour
 
         if (playerCol && heldCol)
             Physics.IgnoreCollision(heldCol, playerCol, true);
+
+        Globals.gunActive = false;
     }
 
     /* ───────── Drop ───────── */
@@ -185,6 +192,8 @@ public class HoldToPickup : MonoBehaviour
         originalParent = null;               // clear for next grab
         heldBody = null;
         heldCol = null;
+
+        Globals.gunActive = true;
     }
 
     /* ───────── Throw ───────── */
@@ -206,6 +215,8 @@ public class HoldToPickup : MonoBehaviour
         heldBody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         heldBody = null;
         heldCol = null;
+
+        Globals.gunActive = true;
     }
 
     private void RestoreCollision()
