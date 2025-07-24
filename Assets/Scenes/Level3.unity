@@ -1292,7 +1292,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2231286172252462742, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
       propertyPath: nextScene
-      value: WinScene
+      value: WinMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5599951319205620725, guid: 3f1101c4468efe644b9419fd2d6ef3c0, type: 3}
       propertyPath: m_Name
