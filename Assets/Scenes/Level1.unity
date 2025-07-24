@@ -3904,7 +3904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_Name
-      value: Sign2
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_text
@@ -4578,7 +4578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_Name
-      value: Sign3
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_text

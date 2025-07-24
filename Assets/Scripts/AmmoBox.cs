@@ -1,6 +1,6 @@
+using Unity.VisualScripting;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +20,8 @@ public class AmmoBox : MonoBehaviour
 
     private AudioSource ammoSound;
 
+    private bool hasGivenAmmo = false; // <-- prevent double-trigger
+
     void Awake()
     {
         ammoSound = GetComponent<AudioSource>();
@@ -27,17 +29,22 @@ public class AmmoBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasGivenAmmo) return; // <-- guard against double-trigger
+
         if (other.CompareTag("Player"))
         {
-            if(Globals.ammo < Globals.magazineCapacity)
+            if (Globals.ammo < Globals.magazineCapacity)
             {
                 Globals.ammo += ammoInBox;
                 if (Globals.ammo > Globals.magazineCapacity)
                     Globals.ammo = Globals.magazineCapacity;
 
                 UpdateAmmoUI();
+                textDisplay.text = "";
+
+                hasGivenAmmo = true; // <-- mark as already used
                 StartCoroutine(PlayAndDestroy());
-            } 
+            }
             else
             {
                 textDisplay.text = "Full Ammo";

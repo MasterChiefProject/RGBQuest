@@ -774,7 +774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4015415638839957565, guid: 9e2dbf90596ab7e4f8e6f57e713831db, type: 3}
       propertyPath: m_Name
-      value: Pumpkin (1)
+      value: Pumpkin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2151,7 +2151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_Name
-      value: Sign (1)
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_text
@@ -2527,7 +2527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271310999842839291, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_Name
-      value: Sign (2)
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 6131634352895921345, guid: c459065178e0625458da4a422fb39513, type: 3}
       propertyPath: m_text
