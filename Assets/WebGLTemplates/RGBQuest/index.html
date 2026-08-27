@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Play RGBQuest, a three-stage Unity 6 color puzzle adventure."
+  >
+  <meta name="color-scheme" content="dark light">
+  <title>RGBQuest | WebGL</title>
+
+  <script>
+    try {
+      if (localStorage.getItem("rgbquest-theme-v1") === "light") {
+        document.documentElement.dataset.theme = "light";
+      }
+    } catch (_) {}
+  </script>
+
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script defer src="TemplateData/shell.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="eyebrow">MASTERCHIEFPROJECT</span>
+      <h1>RGBQuest</h1>
+      <p>Three-stage Unity 6 puzzle adventure</p>
+    </div>
+
+    <nav class="site-actions" aria-label="RGBQuest links">
+      <button id="theme-toggle" class="button" type="button">
+        Light mode
+      </button>
+
+      <a
+        class="button guide"
+        href="https://www.youtube.com/watch?v=b8so2yYArQA"
+        target="_blank"
+        rel="noreferrer"
+      >Trailer / Stage Guide</a>
+
+      <a
+        class="button"
+        href="https://github.com/MasterChiefProject/RGBQuest"
+        target="_blank"
+        rel="noreferrer"
+      >Source</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="game-card">
+      <div class="game-heading">
+        <div>
+          <span class="eyebrow">PLAYABLE WEBGL BUILD</span>
+          <h2>Match the colors. Solve the stage.</h2>
+        </div>
+        <span class="version">Unity 6000.0.47f1 · v1.0.0</span>
+      </div>
+
+      <div id="unity-container">
+        <canvas
+          id="unity-canvas"
+          width="960"
+          height="540"
+          tabindex="-1"
+          aria-label="RGBQuest game canvas"
+        ></canvas>
+
+        <div id="unity-loading-bar" aria-live="polite">
+          <div class="rgb-mark" aria-hidden="true">
+            <span>R</span><span>G</span><span>B</span>
+          </div>
+
+          <strong>RGBQUEST</strong>
+          <span id="unity-loading-text">Loading... 0%</span>
+
+          <div
+            id="unity-progress"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="unity-progress-fill"></div>
+          </div>
+        </div>
+
+        <div id="unity-warning" hidden></div>
+      </div>
+
+      <div class="game-footer">
+        <span>Desktop keyboard and mouse recommended</span>
+        <button
+          id="unity-fullscreen-button"
+          class="button"
+          type="button"
+          disabled
+        >Fullscreen</button>
+      </div>
+
+      <p class="hint">
+        Stuck on a stage? Open the Trailer / Stage Guide for the intended solution path.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>RGBQuest · Unity WebGL portfolio build</span>
+    <a
+      href="https://www.youtube.com/watch?v=b8so2yYArQA"
+      target="_blank"
+      rel="noreferrer"
+    >Watch the guide</a>
+  </footer>
+
+  <script>
+    const canvas = document.querySelector("#unity-canvas");
+    const loadingBar = document.querySelector("#unity-loading-bar");
+    const loadingText = document.querySelector("#unity-loading-text");
+    const progress = document.querySelector("#unity-progress");
+    const progressFill = document.querySelector("#unity-progress-fill");
+    const fullscreenButton =
+      document.querySelector("#unity-fullscreen-button");
+    const warning = document.querySelector("#unity-warning");
+
+    function unityShowBanner(message, type) {
+      const item = document.createElement("div");
+      item.className =
+        type === "error"
+          ? "unity-notice error"
+          : "unity-notice warning";
+
+      item.textContent = message;
+      warning.appendChild(item);
+      warning.hidden = false;
+
+      if (type !== "error") {
+        window.setTimeout(() => {
+          item.remove();
+          warning.hidden = warning.children.length === 0;
+        }, 5000);
+      }
+    }
+
+    const buildUrl = "Build";
+    const loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+
+    const config = {
+      arguments: [],
+      dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+      frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+      codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+      memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      showBanner: unityShowBanner,
+      devicePixelRatio: 1
+    };
+
+    const loader = document.createElement("script");
+    loader.src = loaderUrl;
+
+    loader.onload = () => {
+      createUnityInstance(canvas, config, value => {
+        const percent = Math.round(value * 100);
+
+        progressFill.style.width = percent + "%";
+        progress.setAttribute("aria-valuenow", String(percent));
+        loadingText.textContent = "Loading... " + percent + "%";
+      }).then(unityInstance => {
+        loadingBar.hidden = true;
+        fullscreenButton.disabled = false;
+
+        fullscreenButton.addEventListener(
+          "click",
+          () => unityInstance.SetFullscreen(1)
+        );
+      }).catch(error => {
+        loadingBar.hidden = true;
+        unityShowBanner(String(error), "error");
+      });
+    };
+
+    loader.onerror = () => {
+      loadingBar.hidden = true;
+      unityShowBanner(
+        "The RGBQuest Unity WebGL loader could not be downloaded.",
+        "error"
+      );
+    };
+
+    document.body.appendChild(loader);
+  </script>
+</body>
+</html>

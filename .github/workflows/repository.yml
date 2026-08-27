@@ -1,0 +1,46 @@
+name: Repository checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Static production checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout files required for validation
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            README.md
+            ASSET-NOTICE.md
+            Assets/Editor/RGBQuestWebGLBuild.cs
+            Assets/Scripts/MainMenu.cs
+            Assets/Scripts/PressurePlate.cs
+            Assets/Scripts/HealthBox.cs
+            Assets/Scripts/AmmoBox.cs
+            Assets/Scripts/PortalDoor.cs
+            Assets/WebGLTemplates
+            Packages/manifest.json
+            ProjectSettings/EditorBuildSettings.asset
+            ProjectSettings/ProjectVersion.txt
+            tests
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check browser shell JavaScript
+        run: node --check Assets/WebGLTemplates/RGBQuest/TemplateData/shell.js
+
+      - name: Run repository checks
+        run: node --test tests/repository.test.mjs
