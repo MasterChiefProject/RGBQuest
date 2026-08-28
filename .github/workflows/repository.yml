@@ -28,6 +28,10 @@ jobs:
             Assets/Scripts/HealthBox.cs
             Assets/Scripts/AmmoBox.cs
             Assets/Scripts/PortalDoor.cs
+            Assets/Scripts/WebGLVisualFallbacks.cs
+            Assets/Scripts/WebGLHealthHeartsGraphic.cs
+            Assets/Scripts/WebGLCrosshairGraphic.cs
+            Assets/Settings/Mobile_Renderer.asset
             Assets/WebGLTemplates
             Packages/manifest.json
             ProjectSettings/EditorBuildSettings.asset
@@ -43,4 +47,4 @@ jobs:
         run: node --check Assets/WebGLTemplates/RGBQuest/TemplateData/shell.js
 
       - name: Run repository checks
-        run: node --test tests/repository.test.mjs
+        run: node --test tests/*.test.mjs
