@@ -4,7 +4,7 @@
 [![Unity](https://img.shields.io/badge/Unity-6000.0.47f1-black?logo=unity)](https://unity.com/)
 [![WebGL](https://img.shields.io/badge/WebGL-browser%20build-5b7fff)](https://masterchiefproject.github.io/RGBQuest/)
 
-**RGBQuest** is a three-stage first-person puzzle adventure built with Unity 6. Solve color-driven physics puzzles, place RGB cubes on matching pressure objectives, progress through animated doors and portals, then survive the combat and ghost encounters introduced in later stages.
+**RGBQuest** is a three-stage first-person puzzle adventure built with Unity 6. The game combines RGB color-state puzzles, physics-based object manipulation, animated progression gates, combat, pickups, and NavMesh-driven ghosts.
 
 **Playable WebGL build:** https://masterchiefproject.github.io/RGBQuest/
 
@@ -12,26 +12,26 @@
 
 [![RGBQuest Trailer and Stage Guide](https://img.youtube.com/vi/b8so2yYArQA/hqdefault.jpg)](https://www.youtube.com/watch?v=b8so2yYArQA)
 
-**Watch:** https://www.youtube.com/watch?v=b8so2yYArQA
+**Trailer / walkthrough:** https://www.youtube.com/watch?v=b8so2yYArQA
 
-The video demonstrates the intended solution path through all three stages and doubles as a gameplay trailer and full walkthrough.
+The video demonstrates the intended solution path through all three stages and provides a complete gameplay walkthrough.
 
 ## Gameplay
 
-RGBQuest begins as a physics-focused color puzzle game and gradually introduces more systems.
+RGBQuest begins with physics-focused color puzzles and introduces additional combat and survival mechanics as the player progresses.
 
-The core progression logic tracks four color states:
+Four shared color states drive the core puzzle system:
 
 - Yellow
 - Red
 - Blue
 - Purple
 
-Colored physics objects activate matching pressure plates. Each plate drives its existing animation and lamp feedback while updating shared puzzle state. Once all required states are active, progression systems such as portal doors and level transitions become available.
+Colored physics objects activate matching pressure plates. Each plate updates the shared puzzle state while driving its animation and lamp feedback. Completing the required combination unlocks progression through portal doors and scene transitions.
 
-Later stages add health and ammunition pickups, weapon handling, destructible targets, environmental hazards, and NavMesh-driven ghosts with distinct chase/scatter behavior.
+Later stages add ammunition and health pickups, weapon handling, destructible targets, environmental hazards, and ghosts with distinct chase/scatter behavior.
 
-### Game flow
+## Game flow
 
 ```text
 Main Menu
@@ -55,21 +55,21 @@ Death Menu
 
 | Action | Keyboard / Mouse |
 | --- | --- |
-| Move | `WASD` or Arrow keys |
+| Move | `WASD` / Arrow Keys |
 | Look | Mouse |
 | Jump | `Space` |
 | Sprint | `Left Shift` |
 | Crouch | `C` |
-| Pick up / drop a physics object | `E` |
-| Throw a held object | `T` |
-| Rotate a held object | Hold `R` + Mouse |
+| Pick up / drop physics object | `E` |
+| Throw held object | `T` |
+| Rotate held object | Hold `R` + Mouse |
 | Fire | Left Mouse / `Fire1` |
 
-The WebGL version is intended primarily for desktop browsers with a keyboard and mouse.
+The WebGL build is designed primarily for desktop browsers with keyboard and mouse input.
 
 ## Production scenes
 
-The release build contains exactly these six scenes:
+The release build contains six scenes:
 
 ```text
 Assets/Scenes/MainMenu.unity
@@ -80,7 +80,7 @@ Assets/Scenes/DeathMenu.unity
 Assets/Scenes/WinMenu.unity
 ```
 
-`Assets/Scenes/Main.unity` remains a disabled legacy entry in Unity Build Settings. The production build helper deliberately ignores it without modifying the project's existing Build Settings file.
+`Assets/Scenes/Main.unity` remains a disabled legacy scene and is not part of the production build.
 
 ## Technology
 
@@ -90,23 +90,23 @@ Assets/Scenes/WinMenu.unity
 - Unity Input System `1.14.0`
 - Unity AI Navigation `2.0.8`
 - Cinemachine `3.1.4`
-- Unity physics / Rigidbody interactions
-- NavMesh-based enemy navigation
+- Rigidbody-based physics interactions
+- NavMesh enemy navigation
 - uGUI and TextMesh Pro
 - WebGL / WebAssembly
 - GitHub Pages
 
-## Selected gameplay systems
+## Gameplay architecture
 
-- `Globals` stores shared run state, health, ammunition, weapon state, respawn data, and the four pressure-plate states.
-- `PressurePlate` preserves the scene-authored trigger, Animator, `CubeGlow`, and color-state contract.
-- `HoldToPickup` handles physics-object pickup, drop, throw, rotation, collision handling, and obstruction-aware placement.
-- `Teleport` advances to the configured next scene after the color objectives are complete.
-- `PortalDoor` retains its Animator and audio-driven open/close behavior.
-- `GunController` manages weapon visibility, firing, projectile velocity, ammunition UI, muzzle effects, and sound.
-- `GhostController` uses `NavMeshAgent` with scatter/chase modes and four distinct ghost roles.
-- `HealthBox` and `AmmoBox` retain their trigger-based UI/audio pickup behavior.
-- `DeathMenu` and `WinMenu` implement the failure and completion flow.
+- `Globals` stores shared run state, health, ammunition, weapon state, respawn data, and pressure-plate state.
+- `PressurePlate` connects scene triggers, Animator state, `CubeGlow` feedback, and shared color-state progression.
+- `HoldToPickup` manages physics-object pickup, placement, drop, throw, rotation, and collision handling.
+- `Teleport` advances to the configured scene when the puzzle state is complete.
+- `PortalDoor` coordinates animated and audio-driven puzzle gates.
+- `GunController` manages firing, projectile velocity, ammunition UI, muzzle effects, and weapon audio.
+- `GhostController` uses `NavMeshAgent` with scatter/chase modes and distinct ghost roles.
+- `HealthBox` and `AmmoBox` implement trigger-based pickups with UI and audio feedback.
+- `DeathMenu` and `WinMenu` implement failure and completion flow.
 
 ## Project structure
 
@@ -125,195 +125,110 @@ RGBQuest/
 │       └── RGBQuest/
 ├── Packages/
 ├── ProjectSettings/
+├── docs/                         # Deployable GitHub Pages build
 ├── tests/
 │   └── repository.test.mjs
 ├── ASSET-NOTICE.md
 └── README.md
 ```
 
-`docs/` is generated only after a successful production WebGL build and is then committed for GitHub Pages.
+## WebGL build design
 
-## Production-safety policy
+RGBQuest uses separate project-authored PC and Mobile rendering profiles. The WebGL build retains the project's browser-oriented rendering configuration rather than changing scene content or gameplay logic during packaging.
 
-The production additions are intentionally non-invasive. They do **not** replace gameplay scripts, scenes, Unity Build Settings, quality profiles, Graphics Settings, or URP assets.
+The production build helper performs deployment-focused work:
 
-RGBQuest already has separate project-authored PC and Mobile rendering/quality configurations. Those remain under Unity's control.
-
-The production build helper only:
-
-- validates the six release scene files
-- requires WebGL to already be the active Build Profile
-- applies project metadata (`MasterChiefProject`, `RGBQuest`, `1.0.0`)
+- validates the six release scenes
+- requires WebGL as the active build target
+- applies `MasterChiefProject / RGBQuest / 1.0.0` metadata
 - selects the custom RGBQuest WebGL template
-- enables Gzip compression, decompression fallback, and browser data caching
-- builds the explicit six-scene list into a staging directory
-- replaces `docs/` only after Unity reports a successful build
-- writes `docs/.nojekyll`
+- enables Gzip compression
+- enables decompression fallback
+- enables browser data caching
+- builds into `Builds/RGBQuestWebGLStaging/`
+- publishes `docs/` only after a successful Unity build
+- creates `docs/.nojekyll`
 
-It deliberately does not switch render pipelines, change quality settings, change texture mip policy, alter cameras, or inject runtime rendering overrides.
+This keeps browser packaging separate from scene-authored gameplay behavior.
 
-## Run in the Unity Editor
+## Unity workflow
 
-Use Unity:
+The project targets:
 
 ```text
-6000.0.47f1
+Unity 6000.0.47f1
 ```
 
-Open:
+The primary editor entry scene is:
 
 ```text
 Assets/Scenes/MainMenu.unity
 ```
 
-Press **Play** and validate the existing scene flow before doing any WebGL work:
+The scene flow exposes the main menu, About panel, three gameplay stages, death flow, and victory flow.
+
+The production WebGL command is:
 
 ```text
-START → Level 1
-ABOUT → About panel
-BACK → Main Menu panel
+RGBQuest > Build WebGL for GitHub Pages
 ```
 
-Continue through the three levels and verify pressure plates, lamps, pickups, doors, portals, weapon behavior, ghosts, death flow, and win flow.
-
-The trailer provides the intended solution path:
+A separate validation command is available through:
 
 ```text
-https://www.youtube.com/watch?v=b8so2yYArQA
+RGBQuest > Validate Production Setup
 ```
 
-## Build for GitHub Pages
+## Local WebGL validation
 
-### 1. Validate the normal Editor version
-
-Before switching build profiles, confirm that the game renders and plays normally from `MainMenu.unity`.
-
-### 2. Switch to WebGL manually
-
-Use:
-
-```text
-File → Build Profiles → WebGL
-```
-
-Wait for Unity to finish the platform-specific import/recompile.
-
-Then open `MainMenu.unity` and press **Play again before building**.
-
-If materials become pink or scene behavior changes merely from activating WebGL, stop there and switch back. That indicates a project/platform rendering issue that should be investigated before producing the release build.
-
-### 3. Validate the production setup
-
-Run:
-
-```text
-RGBQuest → Validate Production Setup
-```
-
-### 4. Build
-
-Run:
-
-```text
-RGBQuest → Build WebGL for GitHub Pages
-```
-
-The command builds first into:
-
-```text
-Builds/RGBQuestWebGLStaging/
-```
-
-Only a successful Unity build replaces:
-
-```text
-docs/
-```
-
-The staging directory is already covered by the project's Unity `.gitignore` pattern for `Builds/`.
-
-## Test the browser build locally
-
-Serve the generated `docs/` directory over HTTP:
+The generated `docs/` build is served over HTTP:
 
 ```powershell
 py -m http.server 8000 --directory docs
 ```
 
-Open:
+Local URL:
 
 ```text
 http://localhost:8000/
 ```
 
-Do not test Unity WebGL through a `file://` URL.
+A full browser smoke test covers menu flow, movement, physics-object interaction, pressure plates, lamps, doors, scene transitions, pickups, weapon behavior, ghosts, death flow, win flow, fullscreen, and the custom browser shell.
 
-Verify the complete game, not only the Main Menu:
+## Automated checks
 
-- START / ABOUT / BACK
-- mouse look and keyboard movement
-- physics pickup, drop, throw, and rotate
-- all pressure plates and lamp feedback
-- animated portal doors
-- level transitions
-- health and ammo pickups
-- weapon visibility and firing
-- ghosts
-- Death Menu
-- Win Menu
-- fullscreen
-- Trailer / Stage Guide link
-- dark/light web-shell theme
+GitHub Actions provides lightweight regression coverage without requiring a Unity license on the hosted runner.
 
-## GitHub Pages
-
-After committing the generated `docs/` directory, configure:
-
-```text
-Settings → Pages
-Source: Deploy from a branch
-Branch: main
-Folder: /docs
-```
-
-Deployment URL:
-
-```text
-https://masterchiefproject.github.io/RGBQuest/
-```
-
-## Repository checks
-
-GitHub Actions runs lightweight static validation without requiring a Unity license.
-
-Run the same checks locally with Node.js 22+:
+Local verification:
 
 ```powershell
 node --check Assets\WebGLTemplates\RGBQuest\TemplateData\shell.js
 node --test tests\repository.test.mjs
 ```
 
-The checks intentionally protect the scene-bound contracts that are easy to break accidentally, including the Main Menu UnityEvent method names, pressure-plate serialized fields, pickup UI/audio fields, and animated portal-door behavior.
+The repository checks protect important scene-bound contracts, including:
 
-Unity compilation and Play Mode remain the authoritative tests for serialized scene references and gameplay.
+- Main Menu UnityEvent method names
+- pressure-plate serialized fields
+- pickup UI/audio fields
+- portal-door animation/audio behavior
+- production scene list
+- Unity version and package versions
+- WebGL build metadata and packaging
 
-## Repository cleanup
+Unity compilation and Play Mode provide the final validation layer for serialized scene references and runtime behavior.
 
-`UpgradeLog.htm` is an old Visual Studio migration report and is not part of the game. Remove it before the production commit:
+## Deployment
 
-```powershell
-git rm UpgradeLog.htm
-```
+The committed `docs/` build is published through GitHub Pages.
 
-Do not blindly remove imported Unity asset directories. The project contains substantial third-party content and scene dependencies.
+**Live build:** https://masterchiefproject.github.io/RGBQuest/
 
 ## Assets and licensing
 
 RGBQuest contains imported models, textures, materials, shaders, audio, fonts, animations, editor tooling, and other third-party Unity content.
 
-See [`ASSET-NOTICE.md`](ASSET-NOTICE.md) before redistributing or relicensing repository content.
-
-No repository-wide license is asserted over third-party assets by this project documentation.
+See [`ASSET-NOTICE.md`](ASSET-NOTICE.md) for redistribution and provenance information. The project documentation does not assert a repository-wide license over third-party assets.
 
 ## Repository
 
