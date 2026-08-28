@@ -1,6 +1,5 @@
 # RGBQuest
 
-[![Repository checks](https://github.com/MasterChiefProject/RGBQuest/actions/workflows/repository.yml/badge.svg)](https://github.com/MasterChiefProject/RGBQuest/actions/workflows/repository.yml)
 [![Unity](https://img.shields.io/badge/Unity-6000.0.47f1-black?logo=unity)](https://unity.com/)
 [![WebGL](https://img.shields.io/badge/WebGL-browser%20build-5b7fff)](https://masterchiefproject.github.io/RGBQuest/)
 
@@ -112,9 +111,6 @@ Assets/Scenes/WinMenu.unity
 
 ```text
 RGBQuest/
-├── .github/
-│   └── workflows/
-│       └── repository.yml
 ├── Assets/
 │   ├── Editor/
 │   │   └── RGBQuestWebGLBuild.cs
@@ -126,8 +122,6 @@ RGBQuest/
 ├── Packages/
 ├── ProjectSettings/
 ├── docs/                         # Deployable GitHub Pages build
-├── tests/
-│   └── repository.test.mjs
 ├── ASSET-NOTICE.md
 └── README.md
 ```
@@ -194,29 +188,6 @@ http://localhost:8000/
 ```
 
 A full browser smoke test covers menu flow, movement, physics-object interaction, pressure plates, lamps, doors, scene transitions, pickups, weapon behavior, ghosts, death flow, win flow, fullscreen, and the custom browser shell.
-
-## Automated checks
-
-GitHub Actions provides lightweight regression coverage without requiring a Unity license on the hosted runner.
-
-Local verification:
-
-```powershell
-node --check Assets\WebGLTemplates\RGBQuest\TemplateData\shell.js
-node --test tests\repository.test.mjs
-```
-
-The repository checks protect important scene-bound contracts, including:
-
-- Main Menu UnityEvent method names
-- pressure-plate serialized fields
-- pickup UI/audio fields
-- portal-door animation/audio behavior
-- production scene list
-- Unity version and package versions
-- WebGL build metadata and packaging
-
-Unity compilation and Play Mode provide the final validation layer for serialized scene references and runtime behavior.
 
 ## Deployment
 
